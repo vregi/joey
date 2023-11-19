@@ -9,7 +9,7 @@ public class InteractionEventListener extends ListenerAdapter {
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         super.onSlashCommandInteraction(event);
 
-        System.out.println("Interaction!");
-        event.reply("hi there").setEphemeral(true).queue();
+        System.out.println("interaction");
+        event.reply("pidaras").setEphemeral(true).queue();
     }
 }
