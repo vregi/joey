@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 
 public class Joey {
     public static void main(String[] args) {
-        final String TOKEN = "MTE3NTI0MTM3ODgxNzY1ODkzMQ.GJUtiG.6cpCrZBVEkdhfncxxFEiCrGgSkaFksJxns1nF8";
+        final String TOKEN = "MTE3NTI0MTM3ODgxNzY1ODkzMQ.GipGEK.2CufUGOZXwUw1vaDaRQMG4E6IebZ3-tyR7elAQ";
         JDABuilder jdaBuilder = JDABuilder.createDefault(TOKEN);
 
         JDA jda = jdaBuilder
