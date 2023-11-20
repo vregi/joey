@@ -1,20 +1,12 @@
 import events.*;
-import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
 public class Joey {
-    private final Dotenv config;
-
-    public Joey(Dotenv config) {
-        this.config = config;
-    }
 
     public static void main(String[] args) {
-        Dotenv config = Dotenv.configure().load();
-        String token = config.get("TOKEN");
-
+        final String token = "MTE3NTI0MTM3ODgxNzY1ODkzMQ.GipGEK.2CufUGOZXwUw1vaDaRQMG4E6IebZ3-tyR7elAQ";
         JDABuilder jdaBuilder = JDABuilder.createDefault(token);
 
         JDA jda = jdaBuilder
@@ -24,8 +16,5 @@ public class Joey {
 
         jda.upsertCommand("cmd", "test command").setGuildOnly(false).queue();
         jda.upsertCommand("clear", "Clears entered amount of messages over command.").setGuildOnly(true).queue();
-    }
-    public Dotenv getConfig(){
-        return config;
     }
 }
