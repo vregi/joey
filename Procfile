@@ -1,1 +1,1 @@
-worker: java -jar target/joey-bot.jar
+worker: java -jar target/joey-1.0-SNAPSHOT.jar
