@@ -49,7 +49,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>Joey</mainClass>
+                            <mainClass>app.Joey</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -67,7 +67,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>Joey</mainClass>
+                                    <mainClass>app.Joey</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
