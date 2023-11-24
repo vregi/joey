@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 public class MessageEventListener extends ListenerAdapter  {
     public void onMessageReceived(@NotNull MessageReceivedEvent event)  {
         super.onMessageReceived(event);
-        String guild = event.getGuild().getName();
+        /*String guild = event.getGuild().getName();
         String channel = event.getChannel().getId();
         String message = event.getMessage().getContentDisplay();
         String user = event.getAuthor().getId();
@@ -25,6 +25,8 @@ public class MessageEventListener extends ListenerAdapter  {
                 textChannel.sendMessage(pingUser + " sent: " + message + "\n channel: " + pingChannel).queue();
                 break;
         }
+
+         */
 
     }
 }
