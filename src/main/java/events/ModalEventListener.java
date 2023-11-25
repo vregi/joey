@@ -1,0 +1,36 @@
+package events;
+
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.modals.ModalMapping;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+public class ModalEventListener extends ListenerAdapter {
+    public void onModalInteraction(@NotNull ModalInteractionEvent event){
+        super.onModalInteraction(event);
+        if(event.getModalId().equals("application")){
+
+            List<ModalMapping> values = event.getValues();
+            EmbedBuilder embed = new EmbedBuilder();
+            String userID = event.getUser().getId();
+            String userURL = "https://discord.com/users/" + userID;
+            TextChannel textChannel = event.getGuild().getTextChannelById("1170956070081007646");
+            embed.setAuthor(event.getUser().getName(), userURL, event.getUser().getAvatarUrl());
+            embed.addField("Ваш ник | IRL имя | Возраст | LVL", values.get(0).getAsString(), false);
+            embed.addField("Откаты стрельбы", values.get(1).getAsString(), false);
+            embed.addField("Средний онлайн", values.get(2).getAsString(), false);
+            embed.addField("Цель вступления", values.get(3).getAsString(), false);
+            embed.addField("Прошлые семьи", values.get(4).getAsString(), false);
+            embed.setFooter(event.getUser().getId(), "https://images-ext-1.discordapp.net/external/uTUhiDcRKw1xlc3n3jwcivy2O9WxpfYwxS8bzOgWF9c/https/cdn.discordapp.com/emojis/882601305871360040.png");
+
+
+            textChannel.sendMessageEmbeds(embed.build()).queue();
+            event.reply("Заявка принята.").setEphemeral(true).queue();
+        }
+
+    }
+}

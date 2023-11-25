@@ -1,37 +1,56 @@
 package events;
 
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.interactions.components.ActionRow;
-import net.dv8tion.jda.api.interactions.components.text.TextInput;
-import net.dv8tion.jda.api.interactions.components.text.TextInputStyle;
-import net.dv8tion.jda.api.interactions.modals.Modal;
+import net.dv8tion.jda.api.interactions.components.buttons.Button;
+import net.dv8tion.jda.api.utils.FileUpload;
+import net.dv8tion.jda.api.utils.messages.MessageCreateBuilder;
+import net.dv8tion.jda.api.utils.messages.MessageEditBuilder;
 import org.jetbrains.annotations.NotNull;
 
+
+
+import java.awt.*;
+import java.io.File;
+
 public class InteractionEventListener extends ListenerAdapter {
+
+
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         super.onSlashCommandInteraction(event);
 
-        if (event.getName().equals("modmail"))
-        {
-            TextInput subject = TextInput.create("subject", "Subject", TextInputStyle.SHORT)
-                    .setPlaceholder("Subject of this ticket")
-                    .setMinLength(10)
-                    .setMaxLength(100) // or setRequiredRange(10, 100)
-                    .build();
 
-            TextInput body = TextInput.create("body", "Body", TextInputStyle.PARAGRAPH)
-                    .setPlaceholder("Your concerns go here")
-                    .setMinLength(30)
-                    .setMaxLength(1000)
-                    .build();
+        System.out.println("interaction");
+        switch (event.getName()){
+            case "application":
+                String channelID = event.getChannelId();
+                String guildID = event.getGuild().getId();
+                TextChannel textChannel = event.getJDA().getGuildById(guildID).getTextChannelById(channelID);
+                EmbedBuilder embed = new EmbedBuilder();
+                MessageCreateBuilder message = new MessageCreateBuilder();
+                embed.setTitle("Нажмите ниже чтобы заполнить форму")
+                        //.setImage("https://cdn.discordapp.com/attachments/1174492669997744178/1175512009689813103/image.png?ex=656b7fdf&is=65590adf&hm=b0368254dd5ec8f7fda356e78f52332a787eafa917d83d7d551a6ae5661f942b&")
+                        .setColor(new Color(0x000000));
+                FileUpload file = FileUpload.fromData(new File("C:\\Users\\vregi\\OneDrive\\Documents\\GitHub\\joey-bot\\src\\main\\java\\events\\image.png"));
+                message.addFiles(file);
+                Button button = Button.success("apply", "Заполнить форму");
+                textChannel.sendMessageEmbeds(embed.build()).queue();
+                textChannel.sendMessage(message.build()).setActionRow(button).queue();
+                event.reply("Application form was created!").setEphemeral(true).queue();
 
-            Modal modal = Modal.create("modmail", "Modmail")
-                    .addActionRows(ActionRow.of(subject), ActionRow.of(body))
-                    .build();
+            case "clear":
+                break;
 
-            event.replyModal(modal).queue();
+            case "cmd":
+                break;
+
+            default:
+                event.reply("Unknown command, try again!").setEphemeral(true).queue();
+                break;
         }
     }
 }
