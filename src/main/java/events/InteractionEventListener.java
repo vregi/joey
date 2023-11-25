@@ -35,7 +35,7 @@ public class InteractionEventListener extends ListenerAdapter {
                 embed.setTitle("Нажмите ниже чтобы заполнить форму")
                         //.setImage("https://cdn.discordapp.com/attachments/1174492669997744178/1175512009689813103/image.png?ex=656b7fdf&is=65590adf&hm=b0368254dd5ec8f7fda356e78f52332a787eafa917d83d7d551a6ae5661f942b&")
                         .setColor(new Color(0x000000));
-                FileUpload file = FileUpload.fromData(new File("C:\\Users\\vregi\\OneDrive\\Documents\\GitHub\\joey-bot\\src\\main\\java\\events\\image.png"));
+                FileUpload file = FileUpload.fromData(new File("src/main/java/events/image.png"));
                 message.addFiles(file);
                 Button button = Button.success("apply", "Заполнить форму");
                 textChannel.sendMessageEmbeds(embed.build()).queue();
