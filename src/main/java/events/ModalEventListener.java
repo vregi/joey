@@ -6,6 +6,8 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.modals.ModalMapping;
+import net.dv8tion.jda.api.utils.messages.MessageCreateBuilder;
+import net.dv8tion.jda.api.utils.messages.MessageCreateData;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -26,8 +28,10 @@ public class ModalEventListener extends ListenerAdapter {
             embed.addField("Цель вступления", values.get(3).getAsString(), false);
             embed.addField("Прошлые семьи", values.get(4).getAsString(), false);
             embed.setFooter(event.getUser().getId(), "https://images-ext-1.discordapp.net/external/uTUhiDcRKw1xlc3n3jwcivy2O9WxpfYwxS8bzOgWF9c/https/cdn.discordapp.com/emojis/882601305871360040.png");
+            MessageCreateBuilder message = new MessageCreateBuilder();
+            message.addContent("<@&1084037594230292500> <@&1084035068894380064>");
 
-
+            textChannel.sendMessage(message.build()).queue();
             textChannel.sendMessageEmbeds(embed.build()).queue();
             event.reply("Заявка принята.").setEphemeral(true).queue();
         }
