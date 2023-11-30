@@ -45,6 +45,9 @@ public class InteractionEventListener extends ListenerAdapter {
                 String parameterString = String.valueOf(parameter);
                 event.reply(parameterString).setEphemeral(true).queue();
                 break;
+            case "say":
+                String sayString = event.getInteraction().getOption("string").getAsString();
+                event.reply(sayString).queue();
 
             default:
                 event.reply("Unknown command, try again!").setEphemeral(true).queue();

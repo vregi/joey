@@ -22,13 +22,16 @@ public class Joey {
 
         Guild guild = jda.getGuildById("1078891456376360960");
         guild.updateCommands().addCommands(
-                Commands.slash("application", "Creates a new application form (pop-up)")
-                        .setDefaultPermissions(DefaultMemberPermissions.DISABLED),
+                        Commands.slash("application", "Creates a new application form (pop-up)")
+                                .setDefaultPermissions(DefaultMemberPermissions.DISABLED),
 
-                Commands.slash("clear", "Clears entered amount of messages over command.")
-                        .addOption(OptionType.INTEGER, "amount", "Amount of messages parameter", true))
+                        Commands.slash("clear", "Clears entered amount of messages over command.")
+                                .addOption(OptionType.INTEGER, "amount", "Amount of messages parameter", true),
 
-                .queue();
+                        Commands.slash("say", "Say something through bot.")
+                                .addOption(OptionType.STRING, "string", "String", true)
+                                .setDefaultPermissions(DefaultMemberPermissions.DISABLED))
+                        .queue();
 
 
 
