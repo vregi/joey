@@ -30,6 +30,7 @@ public class Joey {
 
                         Commands.slash("say", "Say something through bot.")
                                 .addOption(OptionType.STRING, "string", "String", true)
+                                .addOption(OptionType.CHANNEL, "channel", "Channel to send.")
                                 .setDefaultPermissions(DefaultMemberPermissions.DISABLED))
                         .queue();
 

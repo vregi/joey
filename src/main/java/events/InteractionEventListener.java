@@ -1,6 +1,7 @@
 package events;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.channel.Channel;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -24,6 +25,7 @@ public class InteractionEventListener extends ListenerAdapter {
 
         System.out.println("interaction");
         switch (event.getName()){
+
             case "application":
                 String applicationCommandChannelID = event.getChannelId();
                 String applicationCommandGuildID = event.getGuild().getId();
@@ -40,14 +42,29 @@ public class InteractionEventListener extends ListenerAdapter {
                 textChannel.sendMessage(message.build()).setActionRow(button).queue();
                 event.reply("Application form was created!").setEphemeral(true).queue();
 
+
+
+
             case "clear":
                 int parameter = event.getInteraction().getOption("amount").getAsInt();
                 String parameterString = String.valueOf(parameter);
                 event.reply(parameterString).setEphemeral(true).queue();
                 break;
+
+
+
             case "say":
-                String sayString = event.getInteraction().getOption("string").getAsString();
-                event.reply(sayString).queue();
+                String sayStringOption = event.getInteraction().getOption("string").getAsString();
+                if(event.getInteraction().getOption("channel") != null){
+                    TextChannel sayChannelOption = event.getInteraction().getOption("channel").getAsChannel().asTextChannel();
+                    sayChannelOption.sendMessage(sayStringOption).queue();
+                    event.reply("Done").setEphemeral(true).queue();
+                } else{
+                    event.reply(sayStringOption).queue();
+                }
+                break;
+
+
 
             default:
                 event.reply("Unknown command, try again!").setEphemeral(true).queue();
