@@ -17,7 +17,13 @@ public class Joey {
         final JDA jda = builder
                 .setActivity(Activity.listening("voices in his head"))
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
-                .addEventListeners(new events.ReadyEventListener(), new events.MessageEventListener(), new events.InteractionEventListener(), new events.ButtonEventListener(), new events.ModalEventListener())
+                .addEventListeners(new events.ReadyEventListener(),
+                        new events.MessageEventListener(),
+                        new events.InteractionEventListener(),
+                        new events.ButtonEventListener(),
+                        new events.ModalEventListener(),
+                        new events.GuildJoinEventListener()
+                )
                 .build().awaitReady();
 
         Guild guild = jda.getGuildById("1078891456376360960");

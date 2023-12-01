@@ -6,13 +6,15 @@ public class GatewayIntentsManager {
     public static final GatewayIntent GUILD_MESSAGES = GatewayIntent.GUILD_MESSAGES;
     public static final GatewayIntent GUILD_MEMBERS = GatewayIntent.GUILD_MEMBERS;
     public static final GatewayIntent MESSAGE_CONTENT = GatewayIntent.MESSAGE_CONTENT;
+    public static final GatewayIntent DIRECT_MESSAGES = GatewayIntent.DIRECT_MESSAGES;
 
 
     public static GatewayIntent[] getGatewayIntents() {
         return new GatewayIntent[]{
                 GUILD_MESSAGES,
                 GUILD_MEMBERS,
-                MESSAGE_CONTENT
+                MESSAGE_CONTENT,
+                DIRECT_MESSAGES
         };
     }
 

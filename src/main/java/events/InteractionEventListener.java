@@ -1,7 +1,6 @@
 package events;
 
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.channel.Channel;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -61,6 +60,7 @@ public class InteractionEventListener extends ListenerAdapter {
                     event.reply("Done").setEphemeral(true).queue();
                 } else{
                     event.reply(sayStringOption).queue();
+                    event.reply("Done").setEphemeral(true).queue();
                 }
                 break;
 
