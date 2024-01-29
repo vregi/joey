@@ -12,7 +12,7 @@ public class ButtonEventListener extends ListenerAdapter {
         super.onButtonInteraction(event);
         switch (event.getButton().getId()){
             case "apply":
-                TextInput userinfo = TextInput.create("userinfo", "Ваш ник | IRL имя | Возраст | LVL", TextInputStyle.SHORT)
+                TextInput userinfo = TextInput.create("userinfo", "Ваш ник | IRL имя | IRL Возраст | LVL", TextInputStyle.SHORT)
                         .setPlaceholder("Ваш ник | IRL имя | Возраст | LVL")
                         .setMinLength(1)
                         .setRequired(true)
