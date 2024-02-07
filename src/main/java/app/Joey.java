@@ -27,20 +27,20 @@ public class Joey {
                 .build().awaitReady();
 
         Guild guild = jda.getGuildById("1078891456376360960");
-        guild.updateCommands().addCommands(
-                        Commands.slash("application", "Creates a new application form (pop-up)")
-                                .setDefaultPermissions(DefaultMemberPermissions.DISABLED),
+        if (guild != null) {
+            guild.updateCommands().addCommands(
+                            Commands.slash("application", "Creates a new application form (pop-up)")
+                                    .setDefaultPermissions(DefaultMemberPermissions.DISABLED),
 
-                        Commands.slash("clear", "Clears entered amount of messages over command.")
-                                .addOption(OptionType.INTEGER, "amount", "Amount of messages parameter", true),
+                            Commands.slash("clear", "Clears entered amount of messages over command.")
+                                    .addOption(OptionType.INTEGER, "amount", "Amount of messages parameter", true),
 
-                        Commands.slash("say", "Say something through bot.")
-                                .addOption(OptionType.STRING, "string", "String", true)
-                                .addOption(OptionType.CHANNEL, "channel", "Channel to send.")
-                                .setDefaultPermissions(DefaultMemberPermissions.DISABLED))
-                        .queue();
-
-
+                            Commands.slash("say", "Say something through bot.")
+                                    .addOption(OptionType.STRING, "string", "String", true)
+                                    .addOption(OptionType.CHANNEL, "channel", "Channel to send.")
+                                    .setDefaultPermissions(DefaultMemberPermissions.DISABLED))
+                            .queue();
+        }
 
 
     }

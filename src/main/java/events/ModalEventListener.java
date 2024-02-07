@@ -17,9 +17,11 @@ public class ModalEventListener extends ListenerAdapter {
                 List<ModalMapping> values = event.getValues();
                 EmbedBuilder embed = new EmbedBuilder();
                 String userID = event.getUser().getId();
-                String userURL = "https://discord.com/users/" + userID;
+                String userPing = "<@" + userID + ">";
+                String userURL = "https://discord.gg/users/" + userID;
                 TextChannel textChannel = event.getGuild().getTextChannelById("1170956070081007646");
                 embed.setAuthor(event.getUser().getName(), userURL, event.getUser().getAvatarUrl());
+                embed.addField("Пользователь: ", userPing, false);
                 embed.addField("Ваш ник | IRL имя | IRL Возраст | LVL", values.get(0).getAsString(), false);
                 embed.addField("Откаты стрельбы", values.get(1).getAsString(), false);
                 embed.addField("Средний онлайн", values.get(2).getAsString(), false);
