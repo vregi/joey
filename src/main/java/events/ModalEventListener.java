@@ -29,7 +29,7 @@ public class ModalEventListener extends ListenerAdapter {
                 embed.addField("Прошлые семьи", values.get(4).getAsString(), false);
                 embed.setFooter(event.getUser().getId(), "https://images-ext-1.discordapp.net/external/uTUhiDcRKw1xlc3n3jwcivy2O9WxpfYwxS8bzOgWF9c/https/cdn.discordapp.com/emojis/882601305871360040.png");
                 MessageCreateBuilder message = new MessageCreateBuilder();
-                message.addContent("<@&1170406055327563856> <@&1084037594230292500>");
+                message.addContent("||<@&1170406055327563856> <@&1084037594230292500> <@&1084035068894380064>||");
 
                 textChannel.sendMessage(message.build()).queue();
                 textChannel.sendMessageEmbeds(embed.build()).queue();
