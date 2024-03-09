@@ -13,7 +13,7 @@ public class Joey {
 
     public static void main(String[] args) throws InterruptedException{
 
-        final JDABuilder builder = JDABuilder.create("MTE3NTI0MTM3ODgxNzY1ODkzMQ.GETYqX.jzhNSpBNZTt5JVGzsyDsflB4CDTdhpTLs-1b24", Arrays.asList(GatewayIntentsManager.getGatewayIntents()));
+        final JDABuilder builder = JDABuilder.create("MTE3NTI0MTM3ODgxNzY1ODkzMQ.G-LzC5.I79galLC5AArSUwUxss-sb2aQ9DjO4tKTXYFb0", Arrays.asList(GatewayIntentsManager.getGatewayIntents()));
         final JDA jda = builder
                 .setActivity(Activity.listening("voices in his head"))
                 .setStatus(OnlineStatus.DO_NOT_DISTURB)
