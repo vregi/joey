@@ -1,6 +1,7 @@
 package events;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -10,9 +11,10 @@ import net.dv8tion.jda.api.utils.messages.MessageCreateBuilder;
 import org.jetbrains.annotations.NotNull;
 
 
-
 import java.awt.*;
 import java.io.File;
+import java.util.List;
+
 
 public class InteractionEventListener extends ListenerAdapter {
 
@@ -46,8 +48,9 @@ public class InteractionEventListener extends ListenerAdapter {
 
             case "clear":
                 int parameter = event.getInteraction().getOption("amount").getAsInt();
-                String parameterString = String.valueOf(parameter);
-                event.reply(parameterString).setEphemeral(true).queue();
+                List<Message> messages = event.getChannel().getHistory().retrievePast(parameter).complete();
+                event.getChannel().purgeMessages(messages);
+                event.reply(String.valueOf(parameter)).setEphemeral(true).queue();
                 break;
 
 
