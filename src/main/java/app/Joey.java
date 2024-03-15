@@ -38,6 +38,12 @@ public class Joey {
                             Commands.slash("say", "Say something through bot.")
                                     .addOption(OptionType.STRING, "string", "String", true)
                                     .addOption(OptionType.CHANNEL, "channel", "Channel to send.")
+                                    .setDefaultPermissions(DefaultMemberPermissions.DISABLED),
+                            Commands.slash("mute", "Mute someone")
+                                    .addOption(OptionType.USER, "user", "User to mute", true)
+                                    .setDefaultPermissions(DefaultMemberPermissions.DISABLED),
+                            Commands.slash("unmute", "Unmute someone")
+                                    .addOption(OptionType.USER, "user", "User to unmute", true)
                                     .setDefaultPermissions(DefaultMemberPermissions.DISABLED))
                             .queue();
         }

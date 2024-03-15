@@ -1,7 +1,10 @@
 package events;
 
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -19,9 +22,14 @@ import java.util.List;
 public class InteractionEventListener extends ListenerAdapter {
 
 
+
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
         super.onSlashCommandInteraction(event);
+
+        User user = event.getInteraction().getOption("user").getAsUser();
+        List<Role> userRole = event.getInteraction().getOption("user").getAsMember().getRoles();
+        Role mutedRole = event.getGuild().getRoleById("1216997414712508436");
 
 
         System.out.println("interaction");
@@ -67,7 +75,23 @@ public class InteractionEventListener extends ListenerAdapter {
                 }
                 break;
 
+            case "mute":
+                if(userRole.contains(mutedRole)){
+                    event.reply("User is already muted. Unmute it or try again if failure.").setEphemeral(true).queue();
+                } else {
+                    event.getGuild().addRoleToMember(user, mutedRole).queue();
+                    event.reply("<@" + user.getId() + "> is muted successfuly!").setEphemeral(true).queue();
+                }
+                break;
 
+            case "unmute":
+                if(!userRole.contains(mutedRole)){
+                    event.reply("User is already unmuted. Mute it or try again if failure.").setEphemeral(true).queue();
+                } else {
+                    event.getGuild().removeRoleFromMember(user, mutedRole).queue();
+                    event.reply("<@" + user.getId() + "> is unmuted successfuly!").setEphemeral(true).queue();
+                }
+                break;
 
             default:
                 event.reply("Unknown command, try again!").setEphemeral(true).queue();
