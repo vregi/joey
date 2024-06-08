@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.interactions.components.text.TextInput;
 import net.dv8tion.jda.api.interactions.components.text.TextInputStyle;
 import net.dv8tion.jda.api.interactions.modals.Modal;
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Text;
 
 
 public class ButtonEventListener extends ListenerAdapter {
@@ -19,6 +20,11 @@ public class ButtonEventListener extends ListenerAdapter {
                         .build();
                 TextInput record = TextInput.create("record", "Откаты стрельбы", TextInputStyle.PARAGRAPH)
                         .setPlaceholder("Откаты с поставок, трассы или взп")
+                        .setMinLength(1)
+                        .setRequired(true)
+                        .build();
+                TextInput timezone = TextInput.create("timezone", "Часовой пояс", TextInputStyle.SHORT)
+                        .setPlaceholder("Введите свой часовой пояс")
                         .setMinLength(1)
                         .setRequired(true)
                         .build();
