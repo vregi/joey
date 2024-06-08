@@ -24,7 +24,7 @@ public class ModalEventListener extends ListenerAdapter {
                 embed.addField("Пользователь: ", userPing, false);
                 embed.addField("Ваш ник | IRL имя | IRL Возраст | LVL", values.get(0).getAsString(), false);
                 embed.addField("Откаты стрельбы", values.get(1).getAsString(), false);
-                embed.addField("Средний онлайн", values.get(2).getAsString(), false);
+                embed.addField("Часовой пояс / Средний онлайн", values.get(2).getAsString(), false);
                 embed.addField("Цель вступления", values.get(3).getAsString(), false);
                 embed.addField("Прошлые семьи", values.get(4).getAsString(), false);
                 embed.setFooter(event.getUser().getId(), "https://images-ext-1.discordapp.net/external/uTUhiDcRKw1xlc3n3jwcivy2O9WxpfYwxS8bzOgWF9c/https/cdn.discordapp.com/emojis/882601305871360040.png");
