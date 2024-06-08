@@ -22,7 +22,7 @@ public class ModalEventListener extends ListenerAdapter {
                 TextChannel textChannel = event.getGuild().getTextChannelById("1170956070081007646");
                 embed.setAuthor(event.getUser().getName(), userURL, event.getUser().getAvatarUrl());
                 embed.addField("Пользователь: ", userPing, false);
-                embed.addField("Ваш ник | IRL имя | IRL Возраст | LVL", values.get(0).getAsString(), false);
+                embed.addField("Ваш ник | IRL Возраст | LVL", values.get(0).getAsString(), false);
                 embed.addField("Откаты стрельбы", values.get(1).getAsString(), false);
                 embed.addField("Часовой пояс / Средний онлайн", values.get(2).getAsString(), false);
                 embed.addField("Цель вступления", values.get(3).getAsString(), false);
