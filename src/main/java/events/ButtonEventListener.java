@@ -23,13 +23,8 @@ public class ButtonEventListener extends ListenerAdapter {
                         .setMinLength(1)
                         .setRequired(true)
                         .build();
-                TextInput timezone = TextInput.create("timezone", "Часовой пояс", TextInputStyle.SHORT)
-                        .setPlaceholder("Введите свой часовой пояс")
-                        .setMinLength(1)
-                        .setRequired(true)
-                        .build();
-                TextInput averageonline = TextInput.create("averageonline", "Средний онлайн", TextInputStyle.SHORT)
-                        .setPlaceholder("Ваш средний онлайн")
+                TextInput averageonline = TextInput.create("averageonline", "Часовой пояс / Средний онлайн", TextInputStyle.SHORT)
+                        .setPlaceholder("Ваш часовой пояс / средний онлайн")
                         .setMinLength(1)
                         .setRequired(true)
                         .build();
@@ -47,7 +42,6 @@ public class ButtonEventListener extends ListenerAdapter {
                 Modal modal = Modal.create("application", "Заявка в UNCONTROL")
                         .addActionRow(userinfo)
                         .addActionRow(record)
-                        .addActionRow(timezone)
                         .addActionRow(averageonline)
                         .addActionRow(entrypurpose)
                         .addActionRow(families)
