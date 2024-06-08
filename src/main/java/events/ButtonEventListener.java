@@ -47,6 +47,7 @@ public class ButtonEventListener extends ListenerAdapter {
                 Modal modal = Modal.create("application", "Заявка в UNCONTROL")
                         .addActionRow(userinfo)
                         .addActionRow(record)
+                        .addActionRow(timezone)
                         .addActionRow(averageonline)
                         .addActionRow(entrypurpose)
                         .addActionRow(families)
