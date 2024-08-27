@@ -15,10 +15,11 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/net.dv8tion/JDA -->
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>5.0.0-beta.17</version>
+            <version>5.1.0</version>
         </dependency>
 
         <dependency>
@@ -26,6 +27,22 @@
             <artifactId>maven-shade-plugin</artifactId>
             <version>3.5.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/software.amazon.awssdk/secretsmanager -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>secretsmanager</artifactId>
+            <version>2.27.12</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/software.amazon.awssdk/regions -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>regions</artifactId>
+            <version>2.27.12</version>
+        </dependency>
+
 
 
     </dependencies>

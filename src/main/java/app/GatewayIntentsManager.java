@@ -2,20 +2,18 @@ package app;
 
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GatewayIntentsManager {
-    public static final GatewayIntent GUILD_MESSAGES = GatewayIntent.GUILD_MESSAGES;
-    public static final GatewayIntent GUILD_MEMBERS = GatewayIntent.GUILD_MEMBERS;
-    public static final GatewayIntent MESSAGE_CONTENT = GatewayIntent.MESSAGE_CONTENT;
-    public static final GatewayIntent DIRECT_MESSAGES = GatewayIntent.DIRECT_MESSAGES;
 
-
-    public static GatewayIntent[] getGatewayIntents() {
-        return new GatewayIntent[]{
-                GUILD_MESSAGES,
-                GUILD_MEMBERS,
-                MESSAGE_CONTENT,
-                DIRECT_MESSAGES
-        };
+    public static List<GatewayIntent> getGatewayIntents() {
+        return new ArrayList<GatewayIntent>() {{
+            add(GatewayIntent.GUILD_MESSAGES);
+            add(GatewayIntent.GUILD_MEMBERS);
+            add(GatewayIntent.MESSAGE_CONTENT);
+            add(GatewayIntent.DIRECT_MESSAGES);
+        }};
     }
 
 }
