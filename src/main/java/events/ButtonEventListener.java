@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.text.TextInput;
 import net.dv8tion.jda.api.interactions.components.text.TextInputStyle;
 import net.dv8tion.jda.api.interactions.modals.Modal;
+import net.dv8tion.jda.internal.interactions.component.TextInputImpl;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
@@ -18,11 +19,12 @@ public class ButtonEventListener extends ListenerAdapter {
                         .setMinLength(1)
                         .setRequired(true)
                         .build();
-                TextInput record = TextInput.create("record", "Откаты стрельбы", TextInputStyle.PARAGRAPH)
+                TextInput record = TextInput.create("record", "Откаты стрельбы (РП состав? Оставьте пустым)", TextInputStyle.PARAGRAPH)
                         .setPlaceholder("Откаты с поставок, трассы или взп")
-                        .setMinLength(1)
-                        .setRequired(true)
+                        .setMinLength(0)
+                        .setRequired(false)
                         .build();
+
                 TextInput averageonline = TextInput.create("averageonline", "Часовой пояс / Средний онлайн", TextInputStyle.SHORT)
                         .setPlaceholder("Ваш часовой пояс / средний онлайн")
                         .setMinLength(1)

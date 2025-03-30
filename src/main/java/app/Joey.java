@@ -8,16 +8,13 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
-import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
-import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueResponse;
-import java.util.Arrays;
+import utils.AWSManager;
+
 public class Joey {
 
     public static void main(String[] args) throws InterruptedException{
 
-        final JDABuilder builder = JDABuilder.create("MTE3NTI0MTM3ODgxNzY1ODkzMQ.GKHG15.d-hA-uX6Ae5N7CxJgjW8LY9QrEP8XUznRWp420", GatewayIntentsManager.getGatewayIntents());
+        final JDABuilder builder = JDABuilder.create(AWSManager.getToken(), GatewayIntentsManager.getGatewayIntents());
         final JDA jda = builder
                 .setActivity(Activity.customStatus("ease yourself"))
                 .setStatus(OnlineStatus.ONLINE)

@@ -105,6 +105,8 @@ public class InteractionEventListener extends ListenerAdapter {
                 }
                 break;
 
+            case "test-form":
+
             default:
                 event.reply("Unknown command, try again!").setEphemeral(true).queue();
                 break;
