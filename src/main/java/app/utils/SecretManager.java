@@ -1,5 +1,7 @@
-package utils;
+package app.utils;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
@@ -7,11 +9,20 @@ import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
 import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueResponse;
 
-public class AWSManager {
-    public static String getToken(){
-        AwsBasicCredentials credentials = AwsBasicCredentials.create(System.getenv("AWS_ACCESS_KEY"), System.getenv("AWS_SECRET_KEY"));
-        String secretName = System.getenv("SECRET_NAME");
-        Region region = Region.of(System.getenv("AWS_REGION"));
+@Component
+public class SecretManager {
+    private final Config config;
+
+    @Autowired
+    public SecretManager(Config config) {
+        this.config = config;
+    }
+
+
+    public String getToken(){
+        AwsBasicCredentials credentials = AwsBasicCredentials.create(config.get("AWS_ACCESS_KEY"), config.get("AWS_SECRET_KEY"));
+        String secretName = config.get("SECRET_NAME");
+        Region region = Region.of(config.get("AWS_REGION"));
 
 
 

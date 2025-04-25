@@ -1,4 +1,4 @@
-package app;
+package app.managers;
 
 import net.dv8tion.jda.api.requests.GatewayIntent;
 

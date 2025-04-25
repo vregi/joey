@@ -1,5 +1,6 @@
-package events;
+package app.listeners;
 
+import app.commands.SlashCommandHandler;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
@@ -12,16 +13,34 @@ import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.utils.FileUpload;
 import net.dv8tion.jda.api.utils.messages.MessageCreateBuilder;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+@Component
 public class InteractionEventListener extends ListenerAdapter {
+
+    private final Map<String, SlashCommandHandler> commandsMap = new HashMap<>();
+
+    @Autowired
+    public InteractionEventListener(List<SlashCommandHandler> commands){
+        for (SlashCommandHandler command : commands) {
+            commandsMap.put(command.getName(), command);
+        }
+    }
 
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
-        super.onSlashCommandInteraction(event);
+
+        String name = event.getName();
+        SlashCommandHandler command = commandsMap.get(name);
+
+        command.handle(event);
 
         User user = null;
         List<Role> userRole = null;

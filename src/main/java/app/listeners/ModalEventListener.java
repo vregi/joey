@@ -1,4 +1,4 @@
-package events;
+package app.listeners;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -7,11 +7,13 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.modals.ModalMapping;
 import net.dv8tion.jda.api.utils.messages.MessageCreateBuilder;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+
+@Component
 public class ModalEventListener extends ListenerAdapter {
     public void onModalInteraction(@NotNull ModalInteractionEvent event){
-        super.onModalInteraction(event);
         switch (event.getModalId()){
             case "application":
                 List<ModalMapping> values = event.getValues();
